@@ -16,3 +16,5 @@ local.properties
 /.idea
 /.grade/wrapper
 .gitignore
+/.idea/gradle.xml
+/.idea/misc.xml
