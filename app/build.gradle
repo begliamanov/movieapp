@@ -90,6 +90,10 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
     implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
     implementation("com.squareup.okhttp3:okhttp:$okkHttp_version")
+
+    // Coil (Async image loader)
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
 }
 // Allow references to generated code
 kapt {
