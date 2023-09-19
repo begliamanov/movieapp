@@ -29,6 +29,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.movieapp.presentation.navigation.NavigationConfig
 import com.example.movieapp.presentation.navigation.Screen
 import com.example.movieapp.ui.theme.MovieAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 data class BottomNavigationItem(
     val title: String,
@@ -36,6 +37,8 @@ data class BottomNavigationItem(
     val screen: Screen
 )
 
+
+@AndroidEntryPoint
 @ExperimentalMaterial3Api
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
