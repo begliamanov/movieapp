@@ -76,7 +76,7 @@ fun HomePage(
                 viewModel.getMovieRecommendations()
             }
             LazyVerticalGrid(
-                modifier = Modifier.padding(horizontal = 8.dp),
+                modifier = Modifier.padding(),
                 columns = GridCells.Fixed(2),
                 content = {
                     items(state.value.movies) { movie ->

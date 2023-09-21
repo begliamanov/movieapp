@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.movieapp.R
@@ -33,7 +32,7 @@ fun FavoritesPage(
         content = { padding ->
 
             LazyVerticalGrid(
-                modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 70.dp),
+                modifier = Modifier.padding(padding),
                 columns = GridCells.Fixed(2),
                 content = {
                     items(state.value.favoriteMovies) { movie ->
