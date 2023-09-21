@@ -12,6 +12,8 @@ data class MovieRecommendationsDto(
         val minimum: String
     )
 
+    data class MovieList(val movies: MutableList<Movie>)
+
     data class Movie(
         val adult: Boolean,
         val backdrop_path: String,
@@ -26,6 +28,6 @@ data class MovieRecommendationsDto(
         val title: String,
         val video: Boolean,
         val vote_average: Double,
-        val vote_count: Int
+        val vote_count: Int,
     )
 }

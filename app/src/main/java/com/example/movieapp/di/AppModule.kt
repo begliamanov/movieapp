@@ -2,11 +2,14 @@ package com.example.movieapp.di
 
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.res.Resources
 import com.example.movieapp.BuildConfig
+import com.example.movieapp.data.localstorage.LocalStorage
 import com.example.movieapp.data.network.api.MovieApi
 import com.example.movieapp.data.repositoryimpl.MovieRepositoryImpl
 import com.example.movieapp.domain.repository.MovieRepository
+import com.example.movieapp.domain.repository.StorageInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -67,6 +70,17 @@ object AppModule {
     @Singleton
     fun provideMovieRecommendations(api: MovieApi): MovieRepository {
         return MovieRepositoryImpl(api)
+    }
+
+    @Provides
+    fun provideSharedPreferences(context: Context): SharedPreferences {
+        return context.getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocalStorage(sharedPreferences: SharedPreferences): StorageInterface {
+        return LocalStorage(sharedPreferences)
     }
 }
 
