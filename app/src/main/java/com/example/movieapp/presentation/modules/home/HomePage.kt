@@ -43,7 +43,8 @@ import com.example.movieapp.presentation.widgets.TabRowElement
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomePage(
-    navController: NavController, viewModel: HomeViewModel = hiltViewModel()
+    navController: NavController,
+    viewModel: HomeViewModel = hiltViewModel()
 ) {
 
     val state = viewModel.movieState.collectAsState()
