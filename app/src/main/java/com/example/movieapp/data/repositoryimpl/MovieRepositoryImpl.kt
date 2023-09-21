@@ -2,7 +2,8 @@ package com.example.movieapp.data.repositoryimpl
 
 import android.content.res.Resources
 import androidx.annotation.RawRes
-import com.example.movieapp.R
+import com.example.movieapp.BuildConfig
+import com.example.movieapp.data.network.api.MovieApi
 import com.example.movieapp.data.network.responseDto.MovieRecommendationsDto
 import com.example.movieapp.domain.repository.MovieRepository
 import com.google.gson.Gson
@@ -10,11 +11,14 @@ import com.google.gson.reflect.TypeToken
 import java.io.InputStreamReader
 import javax.inject.Inject
 
-class MovieRepositoryResImpl @Inject constructor(
-    private val resources: Resources
+class MovieRepositoryImpl @Inject constructor(
+    private val api: MovieApi,
 ) : MovieRepository {
-    override fun getMovieRecommendations(type: String): MovieRecommendationsDto {
-        return resources.getJsonData(R.raw.get_recommendation_response)
+    override suspend fun getMovieRecommendations(type: String): MovieRecommendationsDto {
+        return api.getMovieRecommendations(
+            recommendationType = type,
+            apiKey = BuildConfig.API_KEY
+        )
     }
 
 }

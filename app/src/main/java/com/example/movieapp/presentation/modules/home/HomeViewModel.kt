@@ -27,7 +27,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun getMovieRecommendations(type: String) = viewModelScope.launch {
-        val result = getMovieRecommendationUseCase(type)
+        val result = getMovieRecommendationUseCase("popular")
         _movieState.update { _movieState.value.copy(movies = result.results) }
     }
 }
