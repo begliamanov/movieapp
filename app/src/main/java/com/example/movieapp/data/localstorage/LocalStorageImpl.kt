@@ -2,13 +2,13 @@ package com.example.movieapp.data.localstorage
 
 import android.content.SharedPreferences
 import android.util.Log
-import com.example.movieapp.domain.repository.StorageInterface
+import com.example.movieapp.domain.repository.StorageRepo
 import com.google.gson.Gson
 import javax.inject.Inject
 
-class LocalStorage @Inject constructor(
+class LocalStorageImpl @Inject constructor(
     private var sharedPreferences: SharedPreferences,
-) : StorageInterface {
+) : StorageRepo {
     companion object {
         const val DEFAULT_LONG = 0L
         const val DEFAULT_FLOAT = 0f

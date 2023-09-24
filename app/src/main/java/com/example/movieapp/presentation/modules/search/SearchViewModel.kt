@@ -3,8 +3,8 @@ package com.example.movieapp.presentation.modules.search
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.data.network.responseDto.MovieDto
-import com.example.movieapp.domain.repository.MovieRepository
-import com.example.movieapp.domain.repository.StorageInterface
+import com.example.movieapp.domain.repository.MovieRepo
+import com.example.movieapp.domain.repository.StorageRepo
 import com.example.movieapp.domain.usecases.GetFavoriteMoviesUseCase
 import com.example.movieapp.domain.usecases.GetSearchResultsUseCase
 import com.example.movieapp.domain.usecases.ToggleMovieLikeDislikeUseCase
@@ -17,12 +17,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    movieRepository: MovieRepository,
-    storageInterface: StorageInterface
+    movieRepo: MovieRepo,
+    storageRepo: StorageRepo
 ) : ViewModel() {
-    val getSearchResultsUseCase = GetSearchResultsUseCase(movieRepository)
-    val getFavoriteMoviesUseCase = GetFavoriteMoviesUseCase(storageInterface)
-    val toggleMovieLikeDislikeUseCase = ToggleMovieLikeDislikeUseCase(storageInterface)
+    val getSearchResultsUseCase = GetSearchResultsUseCase(movieRepo)
+    val getFavoriteMoviesUseCase = GetFavoriteMoviesUseCase(storageRepo)
+    val toggleMovieLikeDislikeUseCase = ToggleMovieLikeDislikeUseCase(storageRepo)
 
     private val _searchState = MutableStateFlow(SearchState())
     val searchState = _searchState.asStateFlow()

@@ -3,8 +3,8 @@ package com.example.movieapp.presentation.modules.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.data.network.responseDto.MovieDto
-import com.example.movieapp.domain.repository.MovieRepository
-import com.example.movieapp.domain.repository.StorageInterface
+import com.example.movieapp.domain.repository.MovieRepo
+import com.example.movieapp.domain.repository.StorageRepo
 import com.example.movieapp.domain.usecases.GetFavoriteMoviesUseCase
 import com.example.movieapp.domain.usecases.GetMovieRecommendationUseCase
 import com.example.movieapp.domain.usecases.ToggleMovieLikeDislikeUseCase
@@ -18,13 +18,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    movieRepository: MovieRepository,
-    storageInterface: StorageInterface
+    movieRepo: MovieRepo,
+    storageRepo: StorageRepo
 ) : ViewModel() {
 
-    val getMovieRecommendationUseCase = GetMovieRecommendationUseCase(movieRepository)
-    val getFavoriteMoviesUseCase = GetFavoriteMoviesUseCase(storageInterface)
-    val toggleMovieLikeDislikeUseCase = ToggleMovieLikeDislikeUseCase(storageInterface)
+    val getMovieRecommendationUseCase = GetMovieRecommendationUseCase(movieRepo)
+    val getFavoriteMoviesUseCase = GetFavoriteMoviesUseCase(storageRepo)
+    val toggleMovieLikeDislikeUseCase = ToggleMovieLikeDislikeUseCase(storageRepo)
 
     private val _state = MutableStateFlow(HomeState())
     val state = _state.asStateFlow()

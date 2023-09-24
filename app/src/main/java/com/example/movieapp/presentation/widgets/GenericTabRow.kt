@@ -70,5 +70,4 @@ fun TabRowContent(
 
 data class TabRowElement(
     @StringRes val titleId: Int? = null,
-    val onClick: () -> Unit
 )

@@ -37,6 +37,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.movieapp.R
+import com.example.movieapp.presentation.common.Config.IMAGE_BASE_URL
 import com.example.movieapp.presentation.common.DateUtils.getYearFromStringDate
 import com.example.movieapp.presentation.common.Decimalutils.roundOneDecimal
 
@@ -58,7 +59,7 @@ fun MovieDetailsPage(
             Box() {
                 AsyncImage(
                     modifier = Modifier.fillMaxWidth(),
-                    model = "https://image.tmdb.org/t/p/w500/${movie.backdrop_path}",
+                    model = "$IMAGE_BASE_URL${movie.backdrop_path}",
                     contentScale = ContentScale.FillWidth,
                     contentDescription = null,
                 )
@@ -78,7 +79,7 @@ fun MovieDetailsPage(
                         .height(250.dp)
                         .width(164.dp)
                         .padding(end = 16.dp),
-                    model = "https://image.tmdb.org/t/p/w500/${movie.poster_path}",
+                    model = "$IMAGE_BASE_URL${movie.poster_path}",
                     contentScale = ContentScale.FillHeight,
                     contentDescription = null,
                 )

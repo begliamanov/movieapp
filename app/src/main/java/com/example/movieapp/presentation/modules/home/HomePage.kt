@@ -44,9 +44,7 @@ fun HomePage(
 
 
         val tabRowElements = RecommendationType.values().map {
-            TabRowElement(
-                titleId = it.resValue,
-                onClick = { })
+            TabRowElement(titleId = it.resValue)
         }
         Column {
             GenericTabRow(

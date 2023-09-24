@@ -4,9 +4,9 @@ import com.example.movieapp.data.localstorage.LocalStorageKeys.FavoriteMoviesKey
 import com.example.movieapp.data.network.responseDto.MovieDetailsDto
 import com.example.movieapp.data.network.responseDto.MovieDto
 import com.example.movieapp.data.network.responseDto.MovieList
-import com.example.movieapp.domain.repository.StorageInterface
+import com.example.movieapp.domain.repository.StorageRepo
 
-class ToggleMovieLikeDislikeUseCase(private val storageInterface: StorageInterface) {
+class ToggleMovieLikeDislikeUseCase(private val storageRepo: StorageRepo) {
     operator fun invoke(movie: MovieDto) {
         if (isMovieFavorite(movie.id))
             removeFromFavorites(movie)
@@ -40,7 +40,7 @@ class ToggleMovieLikeDislikeUseCase(private val storageInterface: StorageInterfa
     )
 
     fun isMovieFavorite(movieId: Int): Boolean {
-        val favMoviesId = storageInterface.getObject(
+        val favMoviesId = storageRepo.getObject(
             FavoriteMoviesKey,
             MovieList::class.java
         )?.movies?.map { it.id }
@@ -48,17 +48,17 @@ class ToggleMovieLikeDislikeUseCase(private val storageInterface: StorageInterfa
     }
 
     private fun addToFavorites(movie: MovieDto) {
-        val favMovies = storageInterface.getObject(FavoriteMoviesKey, MovieList::class.java)?.movies
+        val favMovies = storageRepo.getObject(FavoriteMoviesKey, MovieList::class.java)?.movies
             ?: mutableListOf()
         favMovies.add(movie)
-        storageInterface.setObject(FavoriteMoviesKey, MovieList(favMovies))
+        storageRepo.setObject(FavoriteMoviesKey, MovieList(favMovies))
     }
 
     private fun removeFromFavorites(movie: MovieDto) {
-        val favMovies = storageInterface.getObject(FavoriteMoviesKey, MovieList::class.java)?.movies
+        val favMovies = storageRepo.getObject(FavoriteMoviesKey, MovieList::class.java)?.movies
             ?: mutableListOf()
         favMovies.remove(movie)
-        storageInterface.setObject(FavoriteMoviesKey, MovieList(favMovies))
+        storageRepo.setObject(FavoriteMoviesKey, MovieList(favMovies))
     }
 
 

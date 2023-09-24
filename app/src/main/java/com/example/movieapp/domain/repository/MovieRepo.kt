@@ -4,7 +4,7 @@ import com.example.movieapp.data.network.responseDto.MovieDetailsDto
 import com.example.movieapp.data.network.responseDto.MovieRecommendationsDto
 import com.example.movieapp.data.network.responseDto.SearchResultsDto
 
-interface MovieRepository {
+interface MovieRepo {
     suspend fun getMovieRecommendations(type: String): MovieRecommendationsDto
 
     suspend fun getSearchResults(query: String): SearchResultsDto

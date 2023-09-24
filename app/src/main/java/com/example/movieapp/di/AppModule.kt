@@ -5,11 +5,11 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import com.example.movieapp.BuildConfig
-import com.example.movieapp.data.localstorage.LocalStorage
+import com.example.movieapp.data.localstorage.LocalStorageImpl
 import com.example.movieapp.data.network.api.MovieApi
-import com.example.movieapp.data.repositoryimpl.MovieRepositoryImpl
-import com.example.movieapp.domain.repository.MovieRepository
-import com.example.movieapp.domain.repository.StorageInterface
+import com.example.movieapp.data.repositoryimpl.MovieRepoImpl
+import com.example.movieapp.domain.repository.MovieRepo
+import com.example.movieapp.domain.repository.StorageRepo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -68,8 +68,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideMovieRecommendations(api: MovieApi): MovieRepository {
-        return MovieRepositoryImpl(api)
+    fun provideMovieRecommendations(api: MovieApi): MovieRepo {
+        return MovieRepoImpl(api)
     }
 
     @Provides
@@ -79,8 +79,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideLocalStorage(sharedPreferences: SharedPreferences): StorageInterface {
-        return LocalStorage(sharedPreferences)
+    fun provideLocalStorage(sharedPreferences: SharedPreferences): StorageRepo {
+        return LocalStorageImpl(sharedPreferences)
     }
 }
 

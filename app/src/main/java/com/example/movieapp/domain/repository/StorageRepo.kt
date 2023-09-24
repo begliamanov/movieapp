@@ -1,6 +1,6 @@
 package com.example.movieapp.domain.repository
 
-interface StorageInterface {
+interface StorageRepo {
     fun getString(key: String): String?
     fun getInt(key: String): Int?
     fun getLong(key: String): Long

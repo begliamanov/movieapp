@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.movieapp.R
+import com.example.movieapp.presentation.common.Config.IMAGE_BASE_URL
 
 @Composable
 fun MovieItem(
@@ -56,7 +57,7 @@ fun MovieItem(
         Column {
             AsyncImage(
                 modifier = Modifier.weight(1f),
-                model = imageUrl?.let { "https://image.tmdb.org/t/p/w500/$it" },
+                model = imageUrl?.let { "$IMAGE_BASE_URL$it" },
                 contentScale = ContentScale.FillWidth,
                 contentDescription = null,
             )

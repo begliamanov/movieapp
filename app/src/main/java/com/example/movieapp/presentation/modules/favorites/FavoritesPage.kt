@@ -24,7 +24,7 @@ fun FavoritesPage(
     navController: NavController,
     viewModel: FavoritesViewModel = hiltViewModel()
 ) {
-    val state = viewModel.favoriteState.collectAsState()
+    val state = viewModel.state.collectAsState()
 
     Scaffold(
         topBar = {

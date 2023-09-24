@@ -3,8 +3,8 @@ package com.example.movieapp.presentation.modules.moviedetails
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.data.network.responseDto.MovieDetailsDto
-import com.example.movieapp.domain.repository.MovieRepository
-import com.example.movieapp.domain.repository.StorageInterface
+import com.example.movieapp.domain.repository.MovieRepo
+import com.example.movieapp.domain.repository.StorageRepo
 import com.example.movieapp.domain.usecases.GetMovieDetailsUseCase
 import com.example.movieapp.domain.usecases.ToggleMovieLikeDislikeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,12 +16,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MoveDetailsViewModel @Inject constructor(
-    movieRepository: MovieRepository,
-    storageInterface: StorageInterface,
+    movieRepo: MovieRepo,
+    storageRepo: StorageRepo,
 ) : ViewModel() {
 
-    private val getMovieDetailsUseCase = GetMovieDetailsUseCase(movieRepository)
-    val toggleMovieLikeDislikeUseCase = ToggleMovieLikeDislikeUseCase(storageInterface)
+    private val getMovieDetailsUseCase = GetMovieDetailsUseCase(movieRepo)
+    val toggleMovieLikeDislikeUseCase = ToggleMovieLikeDislikeUseCase(storageRepo)
 
 
     private val _state = MutableStateFlow(MovieDetailsState())
