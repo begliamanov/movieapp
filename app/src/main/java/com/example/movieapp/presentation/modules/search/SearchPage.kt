@@ -29,7 +29,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.movieapp.R
 import com.example.movieapp.presentation.common.DateUtils
-import com.example.movieapp.presentation.modules.home.MovieItem
+import com.example.movieapp.presentation.widgets.MovieItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -57,7 +57,8 @@ fun SearchPage(
                         releaseYear = DateUtils.getYearFromStringDate(movie.release_date),
                         isFavorite = false,
                         averageRating = movie.vote_average,
-                        onClick = { })
+                        onClick = { },
+                        onDoubleTap = { viewModel.onLikeClickAction(movie) })
                 }
             })
 
