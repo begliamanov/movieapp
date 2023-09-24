@@ -8,7 +8,6 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieApi {
-
     @GET("movie/{recommendation_type}")
     suspend fun getMovieRecommendations(
         @Path("recommendation_type") recommendationType: String,

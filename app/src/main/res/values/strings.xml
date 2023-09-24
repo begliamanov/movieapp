@@ -9,4 +9,6 @@
     <string name="overview">Overview</string>
     <string name="released_in_s">Released in %s</string>
     <string name="voteAverageOutOf10">%s/10</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
 </resources>

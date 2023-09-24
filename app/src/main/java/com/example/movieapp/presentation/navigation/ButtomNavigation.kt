@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -37,17 +38,17 @@ fun BottomNavigation() {
 
     val items = listOf(
         BottomNavigationItem(
-            "Favorites",
+            stringResource(id = R.string.favorites),
             R.drawable.baseline_favorite_black_24,
             Screen.FavoriteScreen
         ),
         BottomNavigationItem(
-            "Home",
+            stringResource(R.string.home),
             R.drawable.baseline_movie_black_24,
             Screen.HomeScreen
         ),
         BottomNavigationItem(
-            "Search",
+            stringResource(R.string.search),
             R.drawable.baseline_search_black_24,
             Screen.SearchScreen
         ),
