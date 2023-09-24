@@ -26,16 +26,16 @@ class HomeViewModel @Inject constructor(
     val getFavoriteMoviesUseCase = GetFavoriteMoviesUseCase(storageInterface)
     val toggleMovieLikeDislikeUseCase = ToggleMovieLikeDislikeUseCase(storageInterface)
 
-    private val _movieState = MutableStateFlow(HomeState())
-    val movieState = _movieState.asStateFlow()
+    private val _state = MutableStateFlow(HomeState())
+    val state = _state.asStateFlow()
     fun getMovieRecommendations() = viewModelScope.launch {
-        val type = _movieState.value.recommendationType
+        val type = _state.value.recommendationType
         type?.let {
             val result = getMovieRecommendationUseCase(it.type)
             val favoriteMovies = getFavoriteMoviesUseCase()?.movies ?: emptyList()
 
-            _movieState.update {
-                _movieState.value.copy(
+            _state.update {
+                _state.value.copy(
                     movies = result.results,
                     favoriteMovies = favoriteMovies
                 )
@@ -44,7 +44,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun onUpdateRecommendationType(type: RecommendationType) {
-        _movieState.update { _movieState.value.copy(recommendationType = type) }
+        _state.update { _state.value.copy(recommendationType = type) }
     }
 
     fun onLikeClickAction(movie: MovieDto) {

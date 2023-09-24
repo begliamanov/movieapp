@@ -6,4 +6,6 @@
     <string name="upcoming">UPCOMING</string>
     <string name="favorites">Favorites</string>
     <string name="search_here">Search here...</string>
+    <string name="overview">Overview</string>
+    <string name="released_in_s">Released in %s</string>
 </resources>

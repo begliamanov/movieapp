@@ -1,5 +1,6 @@
 package com.example.movieapp.data.network.api
 
+import com.example.movieapp.data.network.responseDto.MovieDetailsDto
 import com.example.movieapp.data.network.responseDto.MovieRecommendationsDto
 import com.example.movieapp.data.network.responseDto.SearchResultsDto
 import retrofit2.http.GET
@@ -19,4 +20,10 @@ interface MovieApi {
         @Query("api_key") apiKey: String,
         @Query("query") query: String
     ): SearchResultsDto
+
+    @GET("movie/{movie_id}")
+    suspend fun getMovieDetails(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String,
+    ): MovieDetailsDto
 }

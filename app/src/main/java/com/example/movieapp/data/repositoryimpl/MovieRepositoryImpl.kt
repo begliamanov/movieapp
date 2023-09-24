@@ -4,6 +4,7 @@ import android.content.res.Resources
 import androidx.annotation.RawRes
 import com.example.movieapp.BuildConfig
 import com.example.movieapp.data.network.api.MovieApi
+import com.example.movieapp.data.network.responseDto.MovieDetailsDto
 import com.example.movieapp.data.network.responseDto.MovieRecommendationsDto
 import com.example.movieapp.data.network.responseDto.SearchResultsDto
 import com.example.movieapp.domain.repository.MovieRepository
@@ -26,6 +27,13 @@ class MovieRepositoryImpl @Inject constructor(
         return api.getSearchResults(
             apiKey = BuildConfig.API_KEY,
             query = query
+        )
+    }
+
+    override suspend fun getMovieDetails(movieId: Int): MovieDetailsDto {
+        return api.getMovieDetails(
+            apiKey = BuildConfig.API_KEY,
+            movieId = movieId
         )
     }
 

@@ -18,6 +18,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.movieapp.presentation.common.DateUtils.getYearFromStringDate
 import com.example.movieapp.presentation.common.RecommendationType
+import com.example.movieapp.presentation.navigation.Screen
 import com.example.movieapp.presentation.widgets.GenericTabRow
 import com.example.movieapp.presentation.widgets.GenericTobAppBar
 import com.example.movieapp.presentation.widgets.MovieItem
@@ -30,7 +31,7 @@ fun HomePage(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
 
-    val state = viewModel.movieState.collectAsState()
+    val state = viewModel.state.collectAsState()
 
     Scaffold(topBar = {
         GenericTobAppBar(title = "Home")
@@ -63,11 +64,11 @@ fun HomePage(
                 columns = GridCells.Fixed(2),
                 content = {
                     items(state.value.movies) { movie ->
-                        MovieItem(imageUrl = movie.backdrop_path,
+                        MovieItem(imageUrl = movie.poster_path,
                             releaseYear = getYearFromStringDate(movie.release_date),
                             isFavorite = state.value.favoriteMovies.contains(movie),
                             averageRating = movie.vote_average,
-                            onClick = {},
+                            onClick = { navController.navigate(Screen.MovieDetailsScreen.route + "/${movie.id}") },
                             onDoubleTap = { viewModel.onLikeClickAction(movie) })
                     }
                 })

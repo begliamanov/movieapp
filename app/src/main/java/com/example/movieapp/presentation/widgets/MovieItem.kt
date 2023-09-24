@@ -57,7 +57,7 @@ fun MovieItem(
             AsyncImage(
                 modifier = Modifier.weight(1f),
                 model = imageUrl?.let { "https://image.tmdb.org/t/p/w500/$it" },
-                contentScale = ContentScale.FillHeight,
+                contentScale = ContentScale.FillWidth,
                 contentDescription = null,
             )
             Row(

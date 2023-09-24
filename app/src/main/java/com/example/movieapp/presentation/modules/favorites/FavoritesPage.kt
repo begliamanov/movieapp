@@ -14,6 +14,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.movieapp.R
 import com.example.movieapp.presentation.common.DateUtils
+import com.example.movieapp.presentation.navigation.Screen
 import com.example.movieapp.presentation.widgets.GenericTobAppBar
 import com.example.movieapp.presentation.widgets.MovieItem
 
@@ -36,11 +37,11 @@ fun FavoritesPage(
                 columns = GridCells.Fixed(2),
                 content = {
                     items(state.value.favoriteMovies) { movie ->
-                        MovieItem(imageUrl = movie.backdrop_path,
+                        MovieItem(imageUrl = movie.poster_path,
                             releaseYear = DateUtils.getYearFromStringDate(movie.release_date),
                             isFavorite = state.value.favoriteMovies.contains(movie),
                             averageRating = movie.vote_average,
-                            onClick = {},
+                            onClick = { navController.navigate(Screen.MovieDetailsScreen.route + "/${movie.id}") },
                             onDoubleTap = { viewModel.onLikeClickAction(movie) })
                     }
                 })
