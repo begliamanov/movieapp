@@ -52,6 +52,8 @@ class HomeViewModel @Inject constructor(
         getMovieRecommendations()
     }
 
+    fun isFavorite(movieId: Int) = toggleMovieLikeDislikeUseCase.isMovieFavorite(movieId)
+
 
 }
 

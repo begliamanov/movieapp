@@ -135,7 +135,7 @@ fun MovieDetailsPage(
                             modifier = Modifier
                                 .size(24.dp)
                                 .padding(top = 0.dp)
-                                .clickable { },
+                                .clickable { viewModel.onLikeClickAction(movie) },
                             painter = painterResource(
                                 id = if (state.value.isFavorite == true) R.drawable.baseline_favorite_black_18
                                 else R.drawable.baseline_favorite_border_black_18

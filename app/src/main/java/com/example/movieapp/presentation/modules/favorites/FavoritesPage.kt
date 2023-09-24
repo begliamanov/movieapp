@@ -39,7 +39,7 @@ fun FavoritesPage(
                     items(state.value.favoriteMovies) { movie ->
                         MovieItem(imageUrl = movie.poster_path,
                             releaseYear = DateUtils.getYearFromStringDate(movie.release_date),
-                            isFavorite = state.value.favoriteMovies.contains(movie),
+                            isFavorite = viewModel.isFavorite(movie.id),
                             averageRating = movie.vote_average,
                             onClick = { navController.navigate(Screen.MovieDetailsScreen.route + "/${movie.id}") },
                             onDoubleTap = { viewModel.onLikeClickAction(movie) })

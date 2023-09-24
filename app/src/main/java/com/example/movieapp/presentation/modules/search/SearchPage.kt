@@ -56,7 +56,7 @@ fun SearchPage(
                 items(state.value.movies) { movie ->
                     MovieItem(imageUrl = movie.poster_path,
                         releaseYear = DateUtils.getYearFromStringDate(movie.release_date),
-                        isFavorite = false,
+                        isFavorite = viewModel.isFavoriteMovie(movie.id),
                         averageRating = movie.vote_average,
                         onClick = { navController.navigate(Screen.MovieDetailsScreen.route + "/${movie.id}") },
                         onDoubleTap = { viewModel.onLikeClickAction(movie) })

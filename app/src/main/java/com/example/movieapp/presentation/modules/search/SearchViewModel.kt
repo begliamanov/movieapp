@@ -47,6 +47,8 @@ class SearchViewModel @Inject constructor(
         val favoriteMovies = getFavoriteMoviesUseCase()?.movies ?: emptyList()
         _searchState.update { _searchState.value.copy(favoriteMovies = favoriteMovies) }
     }
+
+    fun isFavoriteMovie(movieId: Int) = toggleMovieLikeDislikeUseCase.isMovieFavorite(movieId)
 }
 
 data class SearchState(

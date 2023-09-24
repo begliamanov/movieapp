@@ -36,6 +36,8 @@ class FavoritesViewModel @Inject constructor(
         toggleMovieLikeDislikeUseCase(movie)
         getFavorites()
     }
+
+    fun isFavorite(movieId: Int) = toggleMovieLikeDislikeUseCase.isMovieFavorite(movieId)
 }
 
 data class FavoritesState(
