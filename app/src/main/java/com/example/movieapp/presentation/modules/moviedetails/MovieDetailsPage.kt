@@ -38,6 +38,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.movieapp.R
 import com.example.movieapp.presentation.common.DateUtils.getYearFromStringDate
+import com.example.movieapp.presentation.common.Decimalutils.roundOneDecimal
 
 @Composable
 fun MovieDetailsPage(
@@ -102,8 +103,15 @@ fun MovieDetailsPage(
                             painter = painterResource(id = R.drawable.baseline_star_black_18),
                             contentDescription = null
                         )
-                        Text(text = movie.vote_average.toString(), fontSize = 13.sp)
-                        Text(text = movie.vote_count.toString(), fontSize = 12.sp)
+
+                        Text(
+                            text = stringResource(
+                                R.string.voteAverageOutOf10,
+                                movie.vote_average.roundOneDecimal()
+                            ), fontSize = 13.sp
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(text = "(${movie.vote_count})", fontSize = 12.sp)
                     }
                     LazyRow(
                         modifier = Modifier.padding(top = 16.dp),

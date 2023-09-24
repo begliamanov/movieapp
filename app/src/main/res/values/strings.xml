@@ -8,4 +8,5 @@
     <string name="search_here">Search here...</string>
     <string name="overview">Overview</string>
     <string name="released_in_s">Released in %s</string>
+    <string name="voteAverageOutOf10">%s/10</string>
 </resources>
