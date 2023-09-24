@@ -96,7 +96,7 @@ fun HomePage(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieItem(
-    imageUrl: String,
+    imageUrl: String?,
     releaseYear: String,
     isFavorite: Boolean,
     averageRating: Double,
@@ -119,7 +119,7 @@ fun MovieItem(
         Column {
             AsyncImage(
                 modifier = Modifier.weight(1f),
-                model = "https://image.tmdb.org/t/p/w500/$imageUrl",
+                model = imageUrl?.let { "https://image.tmdb.org/t/p/w500/$it" },
                 contentScale = ContentScale.FillHeight,
                 contentDescription = null,
             )

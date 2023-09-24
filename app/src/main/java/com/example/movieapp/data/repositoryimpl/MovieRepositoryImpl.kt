@@ -5,6 +5,7 @@ import androidx.annotation.RawRes
 import com.example.movieapp.BuildConfig
 import com.example.movieapp.data.network.api.MovieApi
 import com.example.movieapp.data.network.responseDto.MovieRecommendationsDto
+import com.example.movieapp.data.network.responseDto.SearchResultsDto
 import com.example.movieapp.domain.repository.MovieRepository
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -18,6 +19,13 @@ class MovieRepositoryImpl @Inject constructor(
         return api.getMovieRecommendations(
             recommendationType = type,
             apiKey = BuildConfig.API_KEY
+        )
+    }
+
+    override suspend fun getSearchResults(query: String): SearchResultsDto {
+        return api.getSearchResults(
+            apiKey = BuildConfig.API_KEY,
+            query = query
         )
     }
 

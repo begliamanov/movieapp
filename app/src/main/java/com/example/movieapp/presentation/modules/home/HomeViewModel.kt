@@ -2,7 +2,7 @@ package com.example.movieapp.presentation.modules.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.movieapp.data.network.responseDto.MovieRecommendationsDto.Movie
+import com.example.movieapp.data.network.responseDto.MovieDto
 import com.example.movieapp.domain.repository.MovieRepository
 import com.example.movieapp.domain.repository.StorageInterface
 import com.example.movieapp.domain.usecases.GetFavoriteMoviesUseCase
@@ -47,7 +47,7 @@ class HomeViewModel @Inject constructor(
         _movieState.update { _movieState.value.copy(recommendationType = type) }
     }
 
-    fun onLikeClickAction(movie: Movie) {
+    fun onLikeClickAction(movie: MovieDto) {
         toggleMovieLikeDislikeUseCase(movie)
         getMovieRecommendations()
     }
@@ -58,6 +58,6 @@ class HomeViewModel @Inject constructor(
 data class HomeState(
     val isLoading: Boolean = false,
     val recommendationType: RecommendationType? = null,
-    val movies: List<Movie> = emptyList(),
-    val favoriteMovies: List<Movie> = emptyList()
+    val movies: List<MovieDto> = emptyList(),
+    val favoriteMovies: List<MovieDto> = emptyList()
 )

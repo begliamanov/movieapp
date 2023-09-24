@@ -45,7 +45,7 @@ fun SearchPage(
             text = state.value.searchText,
             onTextChange = { viewModel.onUpdateSearchText(it) },
             onCloseClicked = { /*TODO*/ },
-            onSearchClicked = { viewModel.onSearchClicked() })
+            onSearchClicked = { viewModel.onSearchClicked(state.value.searchText) })
     }, content = { padding ->
 
         LazyVerticalGrid(

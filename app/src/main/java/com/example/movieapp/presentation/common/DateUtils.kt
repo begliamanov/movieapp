@@ -19,9 +19,13 @@ object DateUtils {
     }
 
     fun getYearFromStringDate(strDate: String, format: String = "yyyy-MM-dd"): String {
-        val date = stringToDate(strDate, format)
-        val year = date.getStrYear()
-        return year
+        return try {
+            val date = stringToDate(strDate, format)
+            val year = date.getStrYear()
+            year
+        } catch (e: Exception) {
+            ""
+        }
     }
 
 }

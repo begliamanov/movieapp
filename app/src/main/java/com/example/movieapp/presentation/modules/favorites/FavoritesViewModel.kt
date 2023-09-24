@@ -2,7 +2,7 @@ package com.example.movieapp.presentation.modules.favorites
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.movieapp.data.network.responseDto.MovieRecommendationsDto
+import com.example.movieapp.data.network.responseDto.MovieDto
 import com.example.movieapp.domain.repository.StorageInterface
 import com.example.movieapp.domain.usecases.GetFavoriteMoviesUseCase
 import com.example.movieapp.domain.usecases.ToggleMovieLikeDislikeUseCase
@@ -32,12 +32,12 @@ class FavoritesViewModel @Inject constructor(
         _favoriteState.update { _favoriteState.value.copy(favoriteMovies = favoriteMovies) }
     }
 
-    fun onLikeClickAction(movie: MovieRecommendationsDto.Movie) {
+    fun onLikeClickAction(movie: MovieDto) {
         toggleMovieLikeDislikeUseCase(movie)
         getFavorites()
     }
 }
 
 data class FavoritesState(
-    val favoriteMovies: List<MovieRecommendationsDto.Movie> = emptyList()
+    val favoriteMovies: List<MovieDto> = emptyList()
 )

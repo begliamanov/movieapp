@@ -2,9 +2,9 @@ package com.example.movieapp.presentation.modules.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.movieapp.data.network.responseDto.MovieRecommendationsDto
+import com.example.movieapp.data.network.responseDto.MovieDto
 import com.example.movieapp.domain.repository.MovieRepository
-import com.example.movieapp.domain.usecases.GetMovieRecommendationUseCase
+import com.example.movieapp.domain.usecases.GetSearchResultsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,7 +16,7 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(
     movieRepository: MovieRepository
 ) : ViewModel() {
-    val getMovieRecommendationUseCase = GetMovieRecommendationUseCase(movieRepository)
+    val getSearchResultsUseCase = GetSearchResultsUseCase(movieRepository)
 
     private val _searchState = MutableStateFlow(SearchState())
     val searchState = _searchState.asStateFlow()
@@ -25,9 +25,8 @@ class SearchViewModel @Inject constructor(
         _searchState.update { _searchState.value.copy(searchText = text) }
     }
 
-    fun onSearchClicked() = viewModelScope.launch {
-        val movies = getMovieRecommendationUseCase("popular").results
-            .filter { it.title.lowercase().contains(_searchState.value.searchText.lowercase()) }
+    fun onSearchClicked(query: String) = viewModelScope.launch {
+        val movies = getSearchResultsUseCase(query).results
         _searchState.update { _searchState.value.copy(movies = movies) }
 
     }
@@ -36,5 +35,5 @@ class SearchViewModel @Inject constructor(
 data class SearchState(
     val isLoading: Boolean = false,
     val searchText: String = "",
-    val movies: List<MovieRecommendationsDto.Movie> = emptyList()
+    val movies: List<MovieDto> = emptyList()
 )
